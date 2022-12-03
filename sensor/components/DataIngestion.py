@@ -19,6 +19,7 @@ class DataIngestion:
     def initiate_data_ingestion(self)->artifact_entity.DataIngestionArtifact:
         try:
             logging.info(f"Exporting collection data as pandas dataframe")
+
             #Exporting collection data as pandas dataframe
             df:pd.DataFrame  = utils.get_collection_as_dataframe(
                 database_name=self.data_ingestion_config.database_name, 
@@ -41,6 +42,8 @@ class DataIngestion:
 
             logging.info("split dataset into train and test set")
             #split dataset into train and test set
+            
+
             train_df,test_df = train_test_split(df,test_size=self.data_ingestion_config.test_size)
             
             logging.info("create dataset directory folder if not available")
